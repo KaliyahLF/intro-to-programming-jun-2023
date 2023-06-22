@@ -3,6 +3,13 @@
 public class Account
 {
     private decimal _balance = 5000; // Fields class level variable
+    private ICanCalculateBonuses _bonusCalculator;
+
+    public Account(ICanCalculateBonuses bonusCalculator)
+    {
+        _bonusCalculator = bonusCalculator;
+    }
+
     public void Deposit(decimal amountToDeposit)
     {
 
