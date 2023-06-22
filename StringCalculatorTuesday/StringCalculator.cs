@@ -5,12 +5,15 @@ namespace StringCalculator;
 
 public class StringCalculator
 {
-    private string[] values;
-    private char[] delimiter = new char[] { ',', '\n', ';', '/'};
+    //String list for numbers separated by delimiter
+    private string[] values, negNumbers, temp;
+    //char list for delimiters
+    private char[] delimiter = new char[] { ',', '\n', ';', '/', '-', '*'};
+    //Sum to add the numbers within the string together
     private int sum = 0;
 
-    private char[] negative = new char[] { '-' };
-    private string[] negNumbers;
+    
+   
     public int Add(string numbers)
     {
         // Handles if there's no entry
@@ -19,13 +22,18 @@ public class StringCalculator
         //Handles if there's only one number
         if (numbers.Length == 1) return int.Parse(numbers);
 
-        try
+        if(numbers.Contains('-'))
         {
-            numbers.Contains('-');
-            negNumbers = numbers.Split(negative);
-        } catch { 
+            negNumbers = numbers.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
+
+            //negNumbers = negNumbers.Split(delimiter);
             Console.WriteLine("Negatives are not allowed. You entered: ");
-            return 0;
+            foreach (string neg in negNumbers)
+            {
+                
+                Console.Write("\"-" + neg + " \"");
+                return 0;
+            }
         }
         
         //If there are multiple numeric values separated by a delimiter,
@@ -39,4 +47,5 @@ public class StringCalculator
            return sum;
         
     }
+
 }   

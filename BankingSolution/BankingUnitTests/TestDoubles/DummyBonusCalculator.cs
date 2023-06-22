@@ -1,9 +1,9 @@
 ﻿
 namespace BankingUnitTests.TestDoubles;
-public class DummyBonusCalculator : ICanCalculateBonuses
+public class StubbedBonusCalculator : ICanCalculateBonuses
 {
     public decimal CalculateBonusForDepositOn(decimal balance, decimal amountOfDeposit)
     {
-        return 0;
+        return (balance == 5000M && amountOfDeposit == 112M) ? 42 : 0;
     }
 }

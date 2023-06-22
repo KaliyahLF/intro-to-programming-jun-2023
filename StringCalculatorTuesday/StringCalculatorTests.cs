@@ -31,6 +31,8 @@ public class StringCalculatorTests
     [InlineData("10,11,12,0,0,1", 34)]
     //Test #5
     [InlineData("-1", 0)]
+    [InlineData("-2", 0)]
+    [InlineData("-2,-3", 0)]   
 
     public void StringCalculator(string numbers, int expected)
     {
