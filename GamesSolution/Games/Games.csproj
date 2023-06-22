@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\ITUStudent\dev\intro-to-programming-jun-2023\GamesSolution\Games\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\ITUStudent\dev\intro-to-programming-jun-2023\GamesSolution\Games\.editorconfig" />
+  </ItemGroup>
+
 </Project>

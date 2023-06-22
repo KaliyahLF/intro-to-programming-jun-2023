@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using Games;
 
-namespace GamesTest
+namespace Games.Test
 {
-    internal class ThinkingAboutTheGame
+    public class ThinkingAboutTheGame
     {
+
+        [Fact]
+        public void DuplicateNamesAreNotAllowed()
+        {
+            var game = new BowlingGame();
+
+            game.AddPlayer("Jim", 120);
+            game.AddPlayer("Kaliyah", 250);
+
+        Assert.Throws<PlayerAlreadyAddedToGameException>(() => game.AddPlayer(" jim ", 200));
+
+        }
     }
 }
+
