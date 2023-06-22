@@ -1,23 +1,23 @@
 ﻿
-namespace BankingUnitTests.BankAccount
+namespace Banking.UnitTests.BankAccount;
+
+public class MakingDeposits
 {
-    public class MakingDeposit
+    [Fact]
+    public void DepositIncreasesBalance()
     {
-        [Fact]
-        public void DepositIncreasesBalance()
-        {
-            Account account = new Account();
+        // Given 
+        // If I have an account and I want to deposit 100
+        Account account = new Account();
+        decimal openingBalance = account.GetBalance(); // Query
+        decimal amountToDeposit = 100M;
 
-            decimal openingBalance = account.GetBalance();
-            decimal amountToDeposit = 100M;
+        // When - I do the deposit
+        account.Deposit(amountToDeposit); // "Command"
 
+        // Then - I can verify it worked if the new balance is 100 more than the balance
+        //        was before.
+        Assert.Equal(openingBalance + amountToDeposit, account.GetBalance());
 
-            account.Deposit(amountToDeposit);
-
-
-            Assert.Equal(openingBalance + amountToDeposit, account.GetBalance());
-            
-        
-        }
     }
 }

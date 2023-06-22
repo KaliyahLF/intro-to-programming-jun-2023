@@ -1,13 +1,30 @@
-﻿public class MakingWithdrawals
-{
-    [Fact]
-    public void MakingAWithdrawalDecreasesTheBalance()
-    {
-        Account account = new Account();
-        decimal closingBalance = account.GetBalance();
-        decimal amountToWithdraw = 100M;
-        account.Withdrawal(amountToWithdraw);
+﻿namespace Banking.UnitTests.BankAccount;
 
-        Assert.Equal(closingBalance - amountToWithdraw, account.GetBalance());
+public class MakingWithdrawals
+{
+    [Theory]
+    [InlineData(100)]
+    [InlineData(125.23)]
+
+    public void MakingAWithdrawlDecreasesTheBalance(decimal amountToWithdraw)
+    {
+        var account = new Account();
+        var openingBalance = account.GetBalance();
+
+
+        account.Withdraw(amountToWithdraw);
+
+        Assert.Equal(openingBalance - amountToWithdraw, account.GetBalance());
+    }
+
+    [Fact]
+    public void CanTakeFullBalance()
+    {
+        var account = new Account();
+        var openingBalance = account.GetBalance();
+
+        account.Withdraw(openingBalance);
+
+        Assert.Equal(0, account.GetBalance());
     }
 }
